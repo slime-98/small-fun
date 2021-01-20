@@ -5,8 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // 菜单的闭合状态 false：不闭合  true：闭合
-    collapsed: false
+    collapsed: false, // 菜单的闭合状态 false：不闭合  true：闭合
+    token: '',  
   },
   mutations: {
     changeCollapsed(state) {

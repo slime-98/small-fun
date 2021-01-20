@@ -15,7 +15,7 @@
           v-model="loginForm.password"
           type="password"
           autocomplete="off"
-		  placeholder="请输入密码"
+          placeholder="请输入密码"
         />
       </a-form-model-item>
       <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import api from '@/api/user'
 export default {
   data() {
     let emailReg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
@@ -67,18 +68,24 @@ export default {
     };
   },
   methods: {
-    submitForm(formName) {
+    submitForm(formName) {  // 登录
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          console.log(this.loginForm);
-          return alert("submit!");
+          api.login(this.loginForm).then(res => {
+            this.$router.push({
+              name: 'Home'
+            })
+          }).catch( err => {
+            this.$message.error(err)
+          });
+          return true;
         } else {
           console.log("error submit!!");
           return false;
         }
       });
     },
-    resetForm(formName) {
+    resetForm(formName) { // 重置
       this.$refs[formName].resetFields();
     },
   },
