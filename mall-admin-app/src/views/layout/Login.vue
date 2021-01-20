@@ -72,6 +72,8 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           api.login(this.loginForm).then(res => {
+            console.log('数据请求成功', res)
+            this.$store.dispatch('setUserInfo', res.data)
             this.$router.push({
               name: 'Home'
             })

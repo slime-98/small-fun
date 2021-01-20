@@ -16,11 +16,11 @@
     <div class="user-info">
       <a-dropdown>
         <a class="ant-dropdown-link" @click="(e) => e.preventDefault()"
-          >点击登录&nbsp;<a-icon type="down" />
+          >{{ $store.state.user.username }}&nbsp;<a-icon type="down" />
         </a>
         <a-menu slot="overlay" style="text-align: center">
           <a-menu-item>
-            <a href="javascript:;">退出</a>
+            <a href="javascript:;" @click="logout">退出</a>
           </a-menu-item>
         </a-menu>
       </a-dropdown>
@@ -39,6 +39,12 @@ export default {
     toggleCollapsed() {
       this.$store.dispatch('changeCollapsed');
     },
+    logout(){
+      this.$store.dispatch('removeUserInfo');
+      this.$router.push({
+        name: 'Login'
+      })
+    }
   },
 };
 </script>
