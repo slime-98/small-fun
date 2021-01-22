@@ -1,4 +1,5 @@
 import axios from 'axios';
+import store from './store';
 
 const instance = axios.create({
     baseURL: 'https://mallapi.duyiedu.com/',    // 该处url会根据环境进行变化（开发、生产）
@@ -8,10 +9,17 @@ const instance = axios.create({
 instance.interceptors.request.use(
     config => {
         console.log(config.url.includes('passport'))
-        if (config.url.includes('passport')) {
-            // config.headers.token = '设置token'
+        if (config.url.includes('passport')) {  // 根据路径判断数据是否需要appkey属性
+            return config;
+        } else {    // 在发送请求时自动添加上appkey
+            return {
+                ...config,
+                params: {
+                    ...config.params,
+                    appkey: store.state.user.appkey
+                }
+            }
         }
-        return config;
     },
     error => {
         console.log(error)

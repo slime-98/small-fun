@@ -72,10 +72,10 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           api.login(this.loginForm).then(res => {
-            console.log('数据请求成功', res)
             this.$store.dispatch('setUserInfo', res.data)
+            console.log('数据请求成功,跳转页面')
             this.$router.push({
-              name: 'Home'
+              name: 'Index'
             })
           }).catch( err => {
             this.$message.error(err)

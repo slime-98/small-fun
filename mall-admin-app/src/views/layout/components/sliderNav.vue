@@ -9,7 +9,9 @@
     </a-button>
     <div class="breadcrumb">
       <a-breadcrumb>
-        <a-breadcrumb-item>{{ currentRoute.matched[0].meta.title }}</a-breadcrumb-item>
+        <a-breadcrumb-item>
+          {{ currentRoute.matched[0].meta.title }}
+        </a-breadcrumb-item>
         <a-breadcrumb-item>
           <router-link :to="{name: currentRoute.matched[1].name}">
             {{ currentRoute.matched[1].meta.title }}
