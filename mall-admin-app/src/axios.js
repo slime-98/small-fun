@@ -32,8 +32,6 @@ instance.interceptors.response.use(
         console.log('响应拦截器返回值判断', response.data.status === 'success')
         const res = response.data;
         if (res.status === 'success') {
-
-            console.log('jinru')
             return Promise.resolve(res);
         } else {
             return Promise.reject(res.msg)
