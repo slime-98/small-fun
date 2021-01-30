@@ -38,6 +38,16 @@ const anycRouterMap = [
         component: () => import('../views/layout/page/productAdd.vue')
       },
       {
+        path: '/add/:id',
+        name: 'Edit',
+        meta: {
+          title: '编辑商品',
+          icon: 'file-add',
+          hidden: true
+        },
+        component: () => import('../views/layout/page/productAdd.vue')
+      },
+      {
         path: '/category',
         name: 'Category',
         meta: {

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <left-menu />
+    <left-menu :key="key" />
     <div :class="{ 'main-app': true, 'menu-unfold': $store.state.collapsed }">
       <slider-nav />
       <router-view></router-view>
@@ -16,8 +16,14 @@ export default {
   data() {
     return {
       collapsed: false,
+      key: new Date().getTime()
     };
   },
+  watch: {
+    $route() {
+      this.key = new Date().getTime();
+    }
+  }
 };
 </script>
 <style lang="less">

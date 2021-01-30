@@ -3,13 +3,15 @@ const roleToRoute = {
     "coustomer": [
         { name: "Product" },
         { name: "List" },
-        { name: "Add" }
+        { name: "Add" },
+        { name: "Edit" },
     ],
     "admin": [
         { name: "Product" },
         { name: "List" },
         { name: "Add" },
-        { name: "Category" }
+        { name: "Category" },
+        { name: "Edit" },
     ]
 }
 

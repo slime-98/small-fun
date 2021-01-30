@@ -1,8 +1,8 @@
 <template>
   <a-table :columns="columns" :data-source="tableData">
-    <div slot="operation">
-        <a-button>编辑</a-button>
-        <a-button>删除</a-button>
+    <div slot="operation" slot-scope="text, record">
+        <a-button @click="editProduct(record)">编辑</a-button>
+        <a-button @click="removeProduct(record)">删除</a-button>
     </div>
   </a-table>
 </template>
@@ -28,7 +28,7 @@ const columns = [
   },
   {
     title: '类目',
-    dataIndex: 'category',
+    dataIndex: 'categoryName',
     key: 'category',
     ellipsis: true,
   },
@@ -56,11 +56,15 @@ const columns = [
     title: '上架状态',
     dataIndex: 'status',
     key: 'status',
+    customRender: (text, record) => {
+      return record.status === 1? "上架": "下架";
+    }
   },
   {
     title: '操作',
     dataIndex: 'operation',
     key: 'operation',
+    width: 200,
     scopedSlots: { customRender: 'operation' },
   },
 ];
@@ -71,7 +75,7 @@ export default {
       columns,
     };
   },
-  props: ['data'],
+  props: ['data', 'categoryList'],
   computed: {
       tableData() {
           return this.data.map(item => {
@@ -81,6 +85,16 @@ export default {
               }
           })
       }
+  },
+  methods: {
+    // 编辑
+    editProduct(record) {
+      this.$emit('edit', record);
+    },
+    // 删除
+    removeProduct(record) {
+      this.$emit('remove', record);
+    }
   }
 };
 </script>
