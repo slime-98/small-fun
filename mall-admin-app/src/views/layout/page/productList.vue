@@ -29,6 +29,7 @@ export default {
     };
   },
   async created() {
+    // 获取类目列表
     await categoryApi.list().then( res => { // appkey在路由拦截里有设置
         if(res.status === 'success'){
             this.categoryList = res.data.data;
@@ -42,6 +43,7 @@ export default {
   methods: {
     // 子组件提交调用的方法
     searchSubmit(form) {
+      console.log(form,this.searchForm)
       this.searchForm = form;
       this.getTableData();
     },
@@ -73,7 +75,6 @@ export default {
         title:"确认删除",
         content: () => <div style="color: red">{"确定删除标题为：" + record.title + "的商品吗"}</div>,
         onOk: () => {
-          console.log('ok',record)
           api.remove({id: record.id}).then(res => {
             console.log("------------删除返回值",res)
             if(res.data.ok === 1) {

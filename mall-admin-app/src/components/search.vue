@@ -32,11 +32,11 @@ export default {
   },
   methods: {
     // 表单提交
-    handleSubmit(e) {
+    handleSubmit() {
       this.$emit('submit', this.searchForm)
     },
     handleChange(value) {
-      this.searchForm.category =  value? value.label: '';  // 容错，当value为空时没有key属性
+      this.searchForm.category =  value? value.key: '';  // 容错，当value为空时没有key属性
     },
     // 获取分类列表
     getCategoryList() {

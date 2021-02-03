@@ -8,7 +8,7 @@ const instance = axios.create({
 // 请求拦截器
 instance.interceptors.request.use(
     config => {
-        console.log(config.url.includes('passport'))
+        console.log(config)
         if (config.url.includes('passport')) {  // 根据路径判断数据是否需要appkey属性
             return config;
         } else {    // 在发送请求时自动添加上appkey
