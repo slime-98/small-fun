@@ -90,13 +90,11 @@ export default {
             this.previewVisible = true;
         },
         // 文件上传时触发的回调
-        handleChange({ file, fileList, event }) {
+        handleChange({ file, fileList }) {
             if(file.status === 'done') {
-                console.log(file, fileList)
                 this.form.images.push(file.response.data.url)
             } else if(file.status === 'removed') {
-                console.log(file, fileList)
-                this.form.images = this.form.images.filter( item => item.url !== file.response.data.url)
+                this.form.images = this.form.images.filter( item => item !== file.url); // 删除图片
             }
             this.fileList = fileList;
         },
