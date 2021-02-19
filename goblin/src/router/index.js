@@ -49,7 +49,7 @@ const routes = [
         path: '/echarts_2',
         name: 'echarts_2',
         meta: {
-          title: '配置项title',
+          title: 'title',
           icon: 'google',
           hidden: false
         },
@@ -59,7 +59,7 @@ const routes = [
         path: '/echarts_3',
         name: 'echarts_3',
         meta: {
-          title: '配置项legend',
+          title: 'legend',
           icon: 'google',
           hidden: false
         },
@@ -69,11 +69,21 @@ const routes = [
         path: '/echarts_4',
         name: 'echarts_4',
         meta: {
-          title: '配置项grid',
+          title: 'grid',
           icon: 'google',
           hidden: false
         },
         component: () => import('../views/layout/page/echarts/echarts_4.vue')
+      },
+      {
+        path: '/echarts_5',
+        name: 'echarts_5',
+        meta: {
+          title: 'polar',
+          icon: 'google',
+          hidden: false
+        },
+        component: () => import('../views/layout/page/echarts/echarts_5.vue')
       },
     ]
   },
