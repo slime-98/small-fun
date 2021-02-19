@@ -22,11 +22,11 @@ export default function getMenuRoute(role, routes) {
         const obj = r;
         if (allowRoutesName.indexOf(r.name) !== -1) {    // 判断角色是否有对应路由
             const { children } = obj;
-            obj.children = children.filter(c => { 
-                allowRoutesName.indexOf(c.name) !== -1;
-                return true
-            });   // 判断角色是否有对应子路由
-            // obj.children = children.filter(c => allowRoutesName.indexOf(c.name) !== -1);
+            // obj.children = children.filter(c => { 
+            //     allowRoutesName.indexOf(c.name) !== -1;
+            //     return true
+            // });   // 判断角色是否有对应子路由
+            obj.children = children.filter(c => allowRoutesName.indexOf(c.name) !== -1);
             return true;
         }
         return false;
