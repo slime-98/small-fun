@@ -19,14 +19,63 @@ export default {
         title: {
             text: 'GitHub上打卡',
         },
+        legend: {
+            data: ['打卡'],
+            padding: [20, 0]
+        },
         polar: {
-            data: ['打卡']
+            center: [400, 350], //极坐标系的坐标
+            radius: '250',  //极坐标系的半径
         },
+        // 极坐标系纵向轴
         radiusAxis: {
+          name: '星期',
+          type: 'category',
+          data: this.days,
+          nameLocation: 'end',
+          nameGap: 28,
+          boundaryGap: false,
 
+          axisLine: {
+            show: true,
+            lineStyle: {
+              color: 'blue',
+              width: 2
+            }
+          },
+          axisTick: {
+            interval: 0,
+            length: 6,
+            alignWithLabel: true,
+          },
+          axisLabel: {
+            interval: 0,
+            rotate: -15,
+            margin: 12,
+          },
+          splitLine: {
+            show: true,
+          },
+          splitArea: {
+            show: true,
+          },
         },
+        // 极坐标系角度轴
         angleAxis: {
-
+          data: this.hours,
+          boundaryGap: false,
+          startAngle: 180,
+          splitLine: {
+            show: true,
+          },
+          axisLine: {
+            lineStyle: {
+              color: 'teal',
+            }
+          }
+        },
+        tooltip: {
+          show: true
         },
         series: {
             name: '打卡',
@@ -44,6 +93,6 @@ export default {
 <style lang="less" scoped>
 #charts1 {
   width: 800px;
-  height: 500px;
+  height: 680px;
 }
 </style>

@@ -76,14 +76,34 @@ const routes = [
         component: () => import('../views/layout/page/echarts/echarts_4.vue')
       },
       {
-        path: '/echarts_5',
+        path: '/polar',
         name: 'echarts_5',
         meta: {
-          title: 'polar',
+          title: '极坐标系',
           icon: 'google',
           hidden: false
         },
         component: () => import('../views/layout/page/echarts/echarts_5.vue')
+      },
+      {
+        path: '/radar',
+        name: 'echarts_6',
+        meta: {
+          title: '雷达图坐标系',
+          icon: 'google',
+          hidden: false
+        },
+        component: () => import('../views/layout/page/echarts/echarts_6.vue')
+      },
+      {
+        path: '/dataZoom',
+        name: 'echarts_7',
+        meta: {
+          title: '区域缩放',
+          icon: 'google',
+          hidden: false
+        },
+        component: () => import('../views/layout/page/echarts/echarts_7.vue')
       },
     ]
   },

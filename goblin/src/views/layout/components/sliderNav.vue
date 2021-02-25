@@ -2,7 +2,7 @@
   <div class="main-header">
     <a-button
       type="primary"
-      style="margin-bottom: 16px"
+      style="margin-bottom: 16px;height: 22px"
       @click="toggleCollapsed"
     >
       <a-icon :type="$store.state.collapsed ? 'menu-unfold' : 'menu-fold'" />
@@ -39,12 +39,6 @@ export default {
     toggleCollapsed() {
       this.$store.dispatch('changeCollapsed');
     },
-    logout(){
-      this.$store.dispatch('removeUserInfo');
-      this.$router.push({
-        name: 'Login'
-      })
-    }
   },
 };
 </script>
